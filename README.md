@@ -10,11 +10,14 @@ Levantamento de alguns pontos para se analisar para aumentar a performance da su
 
 ## Para a identificação muito desses pontos.
 - [x] Observabilidade - Calculadoras e Monitores
-<br>
+<br/>
 - Monitoramento das aplicações para identificar pontos de gargalos, como páginas com muitos
   acessos que podem ser cacheados, tráfego lento em certas request, querys lentas, etc ...
   Por exemplo, use um Elasticsearch com Grafana para visualizar essas informações.
-![grafana](https://user-images.githubusercontent.com/72110460/208099566-218cda3f-bd5d-41d9-9b00-eaddf7d4a468.gif)
+  <br/>
+  <h1 align="center">
+  <img height="300px" width="400px" alt="NextLevelWeek" title="#grafana" src="./grafana.gif"/>
+  </h1>
 
 
 ## Princípios para escalonar aplicações WEB:
@@ -23,9 +26,13 @@ Levantamento de alguns pontos para se analisar para aumentar a performance da su
   Linguagens de script como Javascript, PHP, Python e Ruby, são feitos pra rodar primariamente 
   em um thread só. Caso ele rode apenas em um núcleo por vez, crie mais instâncias, afim 
   de aproveitar a quantidade desejada de núcleos de processamento.
+  
 
 - Faça um load balance entre as instâncias da sua aplicação em seu servidor web.
-
+  <h1 align="center">
+  <img height="300px" width="400px" alt="NextLevelWeek" title="#loadbalance" src="./loadbalance.png"/>
+  </h1>
+  
 - Deixei seu servidor web cuidando das requisições dos arquivos estáticos.
 
 - Use servidores CDN para armazenar seus arquivos estáticos e evitar consultas 
@@ -46,6 +53,9 @@ Levantamento de alguns pontos para se analisar para aumentar a performance da su
 
 - Gerenciamento de requisições para o banco, pode usar uma interface pool de conexões. 
   ex: pgbouncer.
+  <h1 align="center">
+  <img height="300px" width="400px" alt="NextLevelWeek" title="#pgbound" src="./pgbound.png"/>
+  </h1>
 - Otimize suas querys nos banco de dados.
 - Crie réplicas do banco apenas para leitura.
 - Entenda a natureza da sua informação e atividade para saber qual os requisitos do
