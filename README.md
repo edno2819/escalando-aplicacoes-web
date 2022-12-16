@@ -4,20 +4,27 @@ Levantamento de alguns pontos para se analisar para aumentar a performance da su
 - [x] Balanceando Carga - Multi-processos e Proxy Reverso
 - [x] Pool de Conexões - Calculando Uso de Recursos
 - [x] Estratégia de Caching - Economizando Recursos
-- [x] Replicas - Bancos de Dados - Difenças e quando usar
+- [x] Replicas - Bancos de Dados - Diferenças e quando usar
 - [x] Jobs Assíncronos - Devolvendo Rápido
 - [x] CDN - Assets mais Rápidos
 
+## Para a identificação muito desses pontos.
 - [x] Observabilidade - Calculadoras e Monitores
+<br>
+- Monitoramento das aplicações para identificar pontos de gargalos, como páginas com muitos
+  acessos que podem ser cacheados, tráfego lento em certas request, querys lentas, etc ...
+  Por exemplo, use um Elasticsearch com Grafana para visualizar essas informações.
+![grafana](https://user-images.githubusercontent.com/72110460/208099566-218cda3f-bd5d-41d9-9b00-eaddf7d4a468.gif)
 
-## Principios para escalonar aplicações WEB:
+
+## Princípios para escalonar aplicações WEB:
 
 - Certifique-se de que o seu framework está aproveitando os núcleos do seu servidor.
   Linguagens de script como Javascript, PHP, Python e Ruby, são feitos pra rodar primariamente 
   em um thread só. Caso ele rode apenas em um núcleo por vez, crie mais instâncias, afim 
-  de abroveitar a quantidade desejada de núcleos de processamento.
+  de aproveitar a quantidade desejada de núcleos de processamento.
 
-- Faça um load balance entre as instâncias da sua pliacação em seu servidor web.
+- Faça um load balance entre as instâncias da sua aplicação em seu servidor web.
 
 - Deixei seu servidor web cuidando das requisições dos arquivos estáticos.
 
@@ -26,27 +33,25 @@ Levantamento de alguns pontos para se analisar para aumentar a performance da su
   entregarem esses arquivos e ainda estão em várias zonas de disponibilidade para encurtar
   a rota ao cliente.
 
-- Utilize cache nas áreas mais estratégicas. Em home, em paginas mais acessadas,
+- Utilize cache nas áreas mais estratégicas. Em home, em páginas mais acessadas,
   por usuário.
 
 
-- Utilize de processamento assincrono como sistemas de filas, Kafka, rabbitmq.
-  Com alerta para o cliente usando de emails, websocket, etc ...
+- Utilize de processamento asíncrono como sistemas de filas, Kafka, rabbitmq.
+  Com alerta para o cliente usando emails, websocket, etc ...
 
-- Monitoramento das aplicações para identificar pontos de gargalos.
 
 
 ### BANCO DE DADOS:
 
-- Gerenciamento de requisições para o banco, pode usar uma interfaçe pool de conexões. 
-  ex: pgbounce.
+- Gerenciamento de requisições para o banco, pode usar uma interface pool de conexões. 
+  ex: pgbouncer.
 - Otimize suas querys nos banco de dados.
-- Crie replicas do banco apenas para leitura.
+- Crie réplicas do banco apenas para leitura.
 - Entenda a natureza da sua informação e atividade para saber qual os requisitos do
-  para escolher o banco de dados que melhor desempenhe par asua ditução.
+  para escolher o banco de dados que melhor desempenhe para sua situação.
 
 
 ### Referências:
  - https://www.youtube.com/watch?v=KyqFXVVgvIs
  - https://www.businessofapps.com/insights/what-are-scalable-web-applications-and-how-they-work/
-
